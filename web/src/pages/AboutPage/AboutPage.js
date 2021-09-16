@@ -1,4 +1,3 @@
-import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 const AboutPage = () => {
@@ -11,7 +10,6 @@ const AboutPage = () => {
       You can look at this documentation for best practices : https://developers.google.com/search/docs/advanced/appearance/good-titles-snippets */
       />
       <p>This site was created to learn Redwood! Hooray!</p>
-      <Link to={routes.home()}>Return home</Link>
     </>
   )
 }
