@@ -10,17 +10,7 @@ const HomePage = () => {
         /* you should un-comment description and add a unique description, 155 characters or less
       You can look at this documentation for best practices : https://developers.google.com/search/docs/advanced/appearance/good-titles-snippets */
       />
-      <header>
-        <h1>Redwood Blog</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to={routes.about()}>About</Link>
-            </li>
-          </ul>
-        </nav>
-        <main>Home</main>
-      </header>
+      Home
     </>
   )
 }
