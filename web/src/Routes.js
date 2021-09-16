@@ -15,7 +15,7 @@ const Routes = () => {
   return (
     <Router>
       <Set wrap={PostsLayout}>
-        <Route path="/blog-post/{id}" page={BlogPostPage} name="blogPost" />
+        <Route path="/blog-post/{id:Int}" page={BlogPostPage} name="blogPost" />
         <Route path="/posts/new" page={PostNewPostPage} name="newPost" />
         <Route path="/posts/{id:Int}/edit" page={PostEditPostPage} name="editPost" />
         <Route path="/posts/{id:Int}" page={PostPostPage} name="post" />
