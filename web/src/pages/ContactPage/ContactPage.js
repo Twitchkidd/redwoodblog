@@ -2,6 +2,7 @@ import { MetaTags } from '@redwoodjs/web'
 import {
   FieldError,
   Form,
+  FormError,
   Label,
   Submit,
   TextAreaField,
@@ -9,6 +10,7 @@ import {
 } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
+import { useForm } from 'react-hook-form'
 
 const CREATE_CONTACT = gql`
   mutation CreateContactMutation($input: CreateContactInput!) {
@@ -19,9 +21,11 @@ const CREATE_CONTACT = gql`
 `
 
 const ContactPage = () => {
+  const formMethods = useForm()
   const [create, { loading, error }] = useMutation(CREATE_CONTACT, {
     onCompleted: () => {
       toast.success('Thank you for your submission')
+      formMethods.reset()
     },
   })
   const onSubmit = (data) => {
@@ -37,7 +41,17 @@ const ContactPage = () => {
       You can look at this documentation for best practices : https://developers.google.com/search/docs/advanced/appearance/good-titles-snippets */
       />
       <Toaster />
-      <Form onSubmit={onSubmit} validation={{ mode: 'onBlur' }}>
+      <Form
+        onSubmit={onSubmit}
+        validation={{ mode: 'onBlur' }}
+        // This will have stopped working, see tutorial notes 'saving data'
+        error={error}
+        formMethods={formMethods}
+      >
+        <FormError
+          error={error}
+          wrapperStyle={{ color: 'red', backgroundColor: 'lightpink' }}
+        />
         <Label name="name" errorClassName="error">
           Name
         </Label>
